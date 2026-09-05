@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uncapped Investing · Build Your Own Edge</title>
+<style>
+:root{
+  --accent:#2e9e6b; --accent-dark:#237a54; --accent-soft:#e6f4ec;
+  --bg:#ffffff; --bg-soft:#f4f8f6; --text:#152016; --text-soft:#5a6b60;
+  --border:#e4ece7; --line:#d9e5df; --ink:#12331f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.65}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1000px;margin:0 auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;font-size:19px;letter-spacing:-.3px}
+.brand span{color:var(--accent)}
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:var(--text-soft);text-decoration:none;font-size:15px;font-weight:600}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#fff;padding:9px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14px}
+.nav-cta:hover{background:var(--accent-dark)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;text-align:center;padding:100px 24px 84px;
+  background:radial-gradient(circle at 20% 15%,#e6f4ec 0,transparent 45%),radial-gradient(circle at 85% 20%,#dff0e8 0,transparent 42%),linear-gradient(180deg,#f0f7f3,var(--bg))}
+.hero .badge{display:inline-block;background:var(--accent-soft);color:var(--accent-dark);font-weight:700;font-size:14px;padding:7px 18px;border-radius:999px;margin-bottom:22px}
+.hero h1{font-size:52px;letter-spacing:-1.5px;line-height:1.08;max-width:820px;margin:0 auto 18px}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero p{font-size:20px;color:var(--text-soft);max-width:640px;margin:0 auto 32px}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px;transition:.15s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent)}
+
+section{padding:80px 0}
+.section-label{text-transform:uppercase;letter-spacing:1.5px;font-size:13px;font-weight:800;color:var(--accent);margin-bottom:12px}
+h2{font-size:32px;letter-spacing:-.6px;margin-bottom:18px}
+.lead{font-size:18px;color:var(--text-soft);max-width:720px}
+
+/* Mission */
+.mission{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.quote{margin-top:26px;border-left:4px solid var(--accent);padding:6px 0 6px 22px;font-size:22px;font-style:italic;color:var(--ink);max-width:760px}
+
+/* Philosophy cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:14px}
+.card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:26px;box-shadow:0 4px 16px rgba(21,32,22,.04)}
+.card .ic{font-size:24px;margin-bottom:12px}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{font-size:15px;color:var(--text-soft)}
+
+/* Topics */
+.topics{background:var(--bg-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+/* Blog */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:14px}
+.post{display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(21,32,22,.04)}
+.post .thumb{height:120px;background:linear-gradient(135deg,#1e5f43,#2e9e6b);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.4px;padding:0 18px;text-align:center}
+.post .body{padding:20px;flex:1;display:flex;flex-direction:column}
+.post .tag{font-size:12px;font-weight:700;color:var(--accent-dark);background:var(--accent-soft);align-self:flex-start;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+.post h3{font-size:18px;margin-bottom:8px;line-height:1.3}
+.post p{font-size:14px;color:var(--text-soft);flex:1}
+.post a.read{margin-top:14px;color:var(--accent-dark);font-weight:700;text-decoration:none;font-size:14px}
+.post a.read:hover{text-decoration:underline}
+
+/* Join */
+.join{text-align:center}
+.join .box{background:linear-gradient(135deg,#1e5f43,#2e9e6b);color:#fff;border-radius:24px;padding:56px 32px;box-shadow:0 14px 34px rgba(30,95,67,.22)}
+.join h2{font-size:34px;margin-bottom:14px}
+.join p{color:rgba(255,255,255,.9);font-size:18px;max-width:560px;margin:0 auto 28px}
+.socials{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.social{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px}
+.social:hover{background:rgba(255,255,255,.25)}
+
+footer{border-top:1px solid var(--border);padding:34px 24px;color:var(--text-soft);font-size:13px;text-align:center}
+footer .disc{max-width:720px;margin:0 auto 10px}
+
+@media(max-width:720px){
+  .nav-links{display:none}
+  .hero h1{font-size:36px}
+  .hero p{font-size:18px}
+  h2{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand">Uncapped Investing<span>.</span></div>
+    <div class="nav-links">
+      <a href="#mission">Mission</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#topics">What I cover</a>
+      <a href="#blog">Blog</a>
+    </div>
+    <a class="nav-cta" href="#join">Join the community</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="badge">📈 Uncapped Investing · learning in public</span>
+  <h1>No ceilings. Build your own <em>edge</em> — together.</h1>
+  <p>I'm obsessed with understanding how the economy and companies really work. This isn't a channel that talks down to you — it's a community where we get better at investing by sharing ideas and building our own strategies.</p>
+  <div class="hero-btns">
+    <a class="btn btn-primary" href="#join">▶ Watch on YouTube</a>
+    <a class="btn btn-ghost" href="#mission">What this is about</a>
+  </div>
+</header>
+
+<section id="mission" class="mission">
+  <div class="wrap">
+    <div class="section-label">The mission</div>
+    <h2>A community, not a lecture</h2>
+    <p class="lead">The biggest investors don't win alone — they win through relationships, networks and the exchange of ideas. That's what I want to build here: a circle of people who share stock ideas, knowledge and theses, and make each other sharper. I don't just want to hand out what I know. I want to learn from you, too.</p>
+    <div class="quote">"I don't just want to share my knowledge — I want to learn from the community myself."</div>
+  </div>
+</section>
+
+<section id="philosophy">
+  <div class="wrap">
+    <div class="section-label">How I think about investing</div>
+    <h2>My investing philosophy</h2>
+    <p class="lead">Growth, in the spirit of Buffett — but my own way. Not copying, evolving.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🌱</div><h3>Growth, my own way</h3><p>Buffett-style thinking as a foundation — then adapted. A bit more risk appetite, and a real interest in smaller companies with huge potential.</p></div>
+      <div class="card"><div class="ic">🧪</div><h3>Find your own method</h3><p>There's no single right way to invest. You find yours by testing strategies over years — and treating it like a craft you keep improving.</p></div>
+      <div class="card"><div class="ic">🔢</div><h3>Beyond the numbers</h3><p>Facts and financials are non-negotiable. But the real edge is looking past them — at the story, the potential, the method.</p></div>
+      <div class="card"><div class="ic">🧠</div><h3>Investing is a skill</h3><p>Not luck, not a talent you're born with. A skill you learn, practice and get better at — with patience through the messy middle.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="topics" class="topics">
+  <div class="wrap">
+    <div class="section-label">What I cover</div>
+    <h2>The topics on this channel</h2>
+    <div class="grid">
+      <div class="card"><div class="ic">🏢</div><h3>Stocks & companies</h3><p>Deep dives and analyses — including the small, overlooked companies with outsized potential.</p></div>
+      <div class="card"><div class="ic">📚</div><h3>Fundamentals & methods</h3><p>How investing actually works: strategies, valuation, comparisons — explained simply.</p></div>
+      <div class="card"><div class="ic">🎭</div><h3>Behavioral finance</h3><p>Fear, greed, herd behavior, biases. The market runs on psychology — so we study it.</p></div>
+      <div class="card"><div class="ic">📈</div><h3>Skills & learning</h3><p>How to build the skill of investing: practice, feedback, and getting better over time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="section-label">Blog</div>
+    <h2>Reading, not just watching</h2>
+    <p class="lead">Every video also becomes an article — for people who'd rather read, and to go a little deeper. New posts land here.</p>
+    <div class="blog-grid">
+      <div class="post">
+        <div class="thumb">INVESTING IS A SKILL</div>
+        <div class="body">
+          <span class="tag">Mindset</span>
+          <h3>Investing Is a Skill — Not a Talent</h3>
+          <p>The stages every investor goes through, the phase where most people quit, and why the market gives you the most dishonest feedback of any skill.</p>
+          <a class="read" href="blog-investing-is-a-skill.html">Read the article →</a>
+        </div>
+      </div>
+      <div class="post">
+        <div class="thumb">ZETA × PALANTIR</div>
+        <div class="body">
+          <span class="tag">Analysis</span>
+          <h3>Zeta Global × Palantir: My Conviction Thesis</h3>
+          <p>Why Zeta is one of my highest-conviction stocks — the numbers, the valuation, and how Palantir could accelerate its growth (with the honest risks).</p>
+          <a class="read" href="blog-zeta-palantir.html">Read the article →</a>
+        </div>
+      </div>
+      <div class="post">
+        <div class="thumb" style="background:linear-gradient(135deg,#3a4a41,#5a6b60)">MORE COMING</div>
+        <div class="body">
+          <span class="tag">Soon</span>
+          <h3>More articles on the way</h3>
+          <p>New analyses, fundamentals and psychology deep-dives drop here alongside the videos.</p>
+          <a class="read" href="blog.html">View all posts →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="join" class="join">
+  <div class="wrap">
+    <div class="box">
+      <h2>Join the community</h2>
+      <p>Come think out loud with me. Watch, comment, share your own theses — the best investors are the ones who don't do it alone.</p>
+      <div class="socials">
+        <a class="social" href="#">▶ YouTube</a>
+        <a class="social" href="#">📷 Instagram</a>
+        <a class="social" href="#">✉️ Newsletter</a>
+      </div>
+      <p style="margin-top:22px;font-size:14px;opacity:.8;">The links are placeholders — tell me your real ones and I'll set them.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="disc">⚠️ Nothing on this site is investment advice. It's my personal opinion, for general information and educational purposes only. You make your own investment decisions at your own responsibility.</div>
+  © 2026 Uncapped Investing · Build your own edge — together
+</footer>
+
+</body>
+</html>
